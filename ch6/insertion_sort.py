@@ -1,17 +1,18 @@
 def insertion_sort(array):
-    if array[0] > array[1]:
-        array[0], array[1] = array[1], array[0]
-    for i in range(2, len(array)):
+    for i in range(1, len(array)):
         valor_indice_vago = array[i]
-        indice_vago = i
-        for j in range(i-1, -1, -1):
-            troca = False
-            if array[j] > valor_indice_vago:
-                array[indice_vago], indice_vago = array[j], indice_vago - 1
-                troca = True
-            if troca:
-                array[j] = valor_indice_vago
-    return array
+        index_comparacao = i - 1
+        while index_comparacao >= 0:
+            if array[index_comparacao] > valor_indice_vago:
+                array[index_comparacao + 1] = array[index_comparacao]
+                index_comparacao = index_comparacao - 1
+            else:
+                break
+
+        array[index_comparacao + 1] = valor_indice_vago
+
+    return  array
+
 
 def test_insertion_sort():
     tests = [
